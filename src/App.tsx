@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Button } from './Button';
 
-function App() {
+export interface IButton {
+  isOpen: boolean;
+  value: number;
+}
+
+export function App() {
+  const nStateButton:IButton = {
+    isOpen: false,
+    value: 1,
+  }
+  const [button, setButton] = useState<IButton>(nStateButton);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='conteiner'>
+      <Button button={button} setButton ={setButton}valueButton={button.value}/>
+      {button.isOpen && 
+      <div>
+        <Button button={button} setButton ={setButton} valueButton={1}/>
+        <Button button={button} setButton ={setButton} valueButton={2}/>
+        <Button button={button} setButton ={setButton} valueButton={3}/>
+      </div>
+      }
     </div>
   );
 }
 
-export default App;
+
