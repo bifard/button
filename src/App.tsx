@@ -17,7 +17,9 @@ export function App() {
 
   return (
     <div className='conteiner'>
+      {!button.isOpen && 
       <Button button={button} setButton ={setButton}valueButton={button.value}/>
+      }
       {button.isOpen && 
       <div>
         <Button button={button} setButton ={setButton} valueButton={1}/>
